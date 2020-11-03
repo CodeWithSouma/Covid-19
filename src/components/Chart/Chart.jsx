@@ -8,11 +8,11 @@ function Chart({ data: { confirmed, recovered, deaths }, country }) {
 
   useEffect(() => {
     const fetchApi = async () => {
-      setDailyData(await fetchDailyData());
+      setDailyData((await fetchDailyData()) || []);
     };
 
     fetchApi();
-  },[]);
+  }, []);
 
   const lineChart = dailyData.length ? (
     <Line
